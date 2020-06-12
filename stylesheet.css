@@ -1,0 +1,13 @@
+h1 {
+       font-family: Sofia;
+       text-align: center;
+}
+.profile_pic {
+    border-width:5px;
+    border-color:blueviolet;
+    border-style:solid;
+    border-radius:50%;
+}
+.pic {
+    text-align: center;
+}
