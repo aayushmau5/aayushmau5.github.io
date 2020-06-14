@@ -17,7 +17,7 @@ h1 {
     width:590px;
     margin:0 auto;
 }
-.classContent {
+.cardContent {
     padding:10px;
     font-family: Amaranth;
 }
@@ -27,4 +27,7 @@ h1 {
 img {
     width: 300px;
   height: auto;
+}
+.cardContent:hover {
+    color:blueviolet;
 }
