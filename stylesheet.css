@@ -33,3 +33,6 @@ img {
 .cardContent:hover {
     color:white;
 }
+img:hover {
+    transform: scale(1.01);
+}
