@@ -19,6 +19,7 @@ h1 {
     margin:0 auto;
 }
 .cardContent {
+    background: linear-gradient(35deg,blue, blueviolet,white);
     padding:10px;
     font-family: Amaranth;
 }
@@ -30,5 +31,5 @@ img {
   height: auto;
 }
 .cardContent:hover {
-    color:blueviolet;
+    color:white;
 }
