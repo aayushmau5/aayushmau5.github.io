@@ -14,6 +14,7 @@ function Weather(){
 function renderHTML(data){
    var temp = data.main.temp;
    temp = temp - 273;
+   temp = Math.ceil(temp);
    var feels = data.weather[0].main;
    var visibility = data.visibility;
    var wind_speed = data.wind.speed;
