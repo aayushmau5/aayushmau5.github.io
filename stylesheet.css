@@ -36,3 +36,27 @@ img {
 img:hover {
     transform: scale(1.01);
 }
+.wrapper {
+    margin-top:30px;
+    text-align: center;
+}
+.title {
+    font-family: Amaranth;
+    margin-bottom: 10px;
+}
+#btn {
+    color:white;
+    background-color: cornflowerblue;
+    border-radius: 5px;
+    padding:8px;
+    border:1px solid black;
+}
+#btn:hover {
+    background-color: blueviolet;
+}
+.btn-wrapper {
+    margin-bottom: 10px;
+}
+.hide-me {
+    display:none;
+}
