@@ -20,6 +20,6 @@ function renderHTML(data){
    var wind_speed = data.wind.speed;
    var pressure = data.main.pressure;
    var humidity = data.main.humidity;
-   var string = 'The temperature is '+temp+'°C and feels like '+feels+'<br> Visibility '+visibility+'<br> Wind speed: '+wind_speed+ '<br> Pressure:'+pressure+'<br> Humidity:'+humidity;
+   var string = '<p style="font-family:Amaranth;">The temperature is '+temp+'°C and feels like '+feels+'<br> Visibility '+visibility+'<br> Wind speed: '+wind_speed+ '<br> Pressure:'+pressure+'<br> Humidity:'+humidity+' </p>';
     weather_info_delhi.insertAdjacentHTML('beforeend',string);
 }
