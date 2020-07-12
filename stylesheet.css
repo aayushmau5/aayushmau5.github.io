@@ -44,18 +44,17 @@ img:hover {
     font-family: Amaranth;
     margin-bottom: 10px;
 }
-#btn {
+.id {
     color:white;
     background-color: cornflowerblue;
     border-radius: 5px;
     padding:8px;
     border:1px solid black;
+    transition: width 2s linear;
 }
-#btn:hover {
+.id:hover {
     background-color: blueviolet;
-}
-.btn-wrapper {
-    margin-bottom: 10px;
+    width:300px;
 }
 .hide-me {
     display:none;
