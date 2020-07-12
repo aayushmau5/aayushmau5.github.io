@@ -8,6 +8,7 @@ h1 {
     border-style:solid;
     border-radius:50%;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    transition: 0.5s;
 }
 .pic {
     text-align: center;
@@ -22,6 +23,7 @@ h1 {
     background: linear-gradient(35deg,blue, blueviolet,white);
     padding:10px;
     font-family: Amaranth;
+    transition: 0.4s;
 }
 #thumbnail {
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
@@ -44,17 +46,22 @@ img:hover {
     font-family: Amaranth;
     margin-bottom: 10px;
 }
-.id {
+#btn {
     color:white;
     background-color: cornflowerblue;
     border-radius: 5px;
     padding:8px;
-    border:1px solid black;
-    transition: width 2s linear;
+    border:1px solid gray;
+    font-family: Amaranth;
+    font-size:16px;
+    transition: 0.3s;
 }
-.id:hover {
+#btn:hover {
     background-color: blueviolet;
-    width:300px;
+    border-color: black;
+}
+.btn-wrapper {
+    margin-bottom: 10px;
 }
 .hide-me {
     display:none;
