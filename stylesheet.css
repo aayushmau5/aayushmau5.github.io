@@ -1,68 +1,142 @@
-h1 {
-       font-family: Sofia;
-       text-align: center;
+body {
+    margin: 0;
 }
+
+
+/*###########################
+############ Main ###########
+###########################*/
+
+h1 {
+    font-family: Sofia;
+    text-align: center;
+}
+
 .profile_pic {
-    border-width:5px;
-    border-color:blueviolet;
-    border-style:solid;
-    border-radius:50%;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    border-width: 5px;
+    border-color: blueviolet;
+    border-style: solid;
+    border-radius: 50%;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
     transition: 0.5s;
 }
+
 .pic {
     text-align: center;
 }
+
 .fullCard {
-    border:1px solid grey;
+    border: 1px solid grey;
     border-radius: 5px;
-    width:590px;
-    margin:0 auto;
+    width: 590px;
+    margin: 0 auto;
 }
+
 .cardContent {
-    background: linear-gradient(35deg,blue, blueviolet,white);
-    padding:10px;
+    background: linear-gradient(35deg, blue, blueviolet, white);
+    padding: 10px;
     font-family: Amaranth;
     transition: 0.4s;
 }
+
 #thumbnail {
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
+
 img {
     width: 300px;
-  height: auto;
+    height: auto;
 }
+
 .cardContent:hover {
-    color:white;
+    color: white;
 }
+
 img:hover {
     transform: scale(1.01);
 }
+
 .wrapper {
-    margin-top:30px;
+    margin-top: 30px;
     text-align: center;
 }
+
 .title {
     font-family: Amaranth;
     margin-bottom: 10px;
 }
+
 #btn {
-    color:white;
+    color: white;
     background-color: cornflowerblue;
     border-radius: 5px;
-    padding:8px;
-    border:1px solid gray;
+    padding: 8px;
+    border: 1px solid gray;
     font-family: Amaranth;
-    font-size:16px;
+    font-size: 16px;
     transition: 0.3s;
 }
+
 #btn:hover {
     background-color: blueviolet;
     border-color: black;
 }
+
 .btn-wrapper {
     margin-bottom: 10px;
 }
+
 .hide-me {
-    display:none;
+    display: none;
+}
+
+
+/*###########################
+######### SideNav ###########
+###########################*/
+
+.nav {
+    display: inline-block;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: 0.2s;
+}
+
+.sidenav {
+    padding-top: 15px;
+}
+
+.sidenav a {
+    text-decoration: none;
+    color: gray;
+    font-size: 24px;
+    font-family: Amaranth, 'Courier New', Courier, monospace;
+    transition: 0.3s;
+    padding: 15px 0px 0px 10px;
+    display: block;
+}
+
+.sidenav a:hover {
+    color: white;
+}
+
+button {
+    color: black;
+    background: none;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+button:focus {
+    outline: none;
+    border: none;
 }
