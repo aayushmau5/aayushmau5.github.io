@@ -1,3 +1,23 @@
+////////////////////////////////
+//For side navigation bar//////
+//////////////////////////////
+let butn = document.querySelector('button');
+let nav = document.querySelector('.sidenav');
+let close = document.querySelector('.close');
+
+butn.addEventListener('click', () => {
+    nav.style.width = '250px';
+    butn.style.color = 'white';
+});
+
+close.addEventListener('click', () => {
+    nav.style.width = '0px';
+    butn.style.color = 'black';
+});
+
+///////////////////////
+//For weather info////
+/////////////////////
 let weather_info_delhi = document.getElementById('weather_info');
 let btn = document.getElementById('btn');
 
@@ -15,6 +35,6 @@ function renderHTML(data) {
     let wind_speed = data.wind.speed;
     let pressure = data.main.pressure;
     let humidity = data.main.humidity;
-    let string = '<p style="font-family:Amaranth;">The temperature is ' + temp + '°C and feels like ' + feels + '<br> Visibility ' + visibility + '<br> Wind speed: ' + wind_speed + '<br> Pressure:' + pressure + '<br> Humidity:' + humidity + ' </p>';
+    let string = `<p style="font-family:Amaranth;">The temperature is ${temp}°C and feels like ${feels} <br> Visibility ${visibility}<br> Wind speed: ${wind_speed}<br> Pressure: ${pressure}<br> Humidity: ${humidity} </p>`;
     weather_info_delhi.insertAdjacentHTML('beforeend', string);
 }
