@@ -4,10 +4,15 @@ body {
   text-align: center;
   background-color: rgb(65, 65, 65);
   color: white;
+  height: 100vh;
 }
 
 a {
   color: white;
+}
+
+h1 {
+  margin-top: 0;
 }
 
 .socials {
