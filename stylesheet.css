@@ -2,13 +2,22 @@ body {
   margin: 0;
   font-family: Amaranth;
   text-align: center;
-  background-color: rgb(65, 65, 65);
-  color: white;
+  background-color: white;
+  color: black;
   height: 100vh;
 }
 
 a {
+  color: rgb(12, 125, 230);
+}
+
+.darkmode {
+  background-color: rgb(65, 65, 65);
   color: white;
+}
+
+.darkmode a {
+  color: skyblue;
 }
 
 h1 {
@@ -17,4 +26,19 @@ h1 {
 
 .socials {
   font-size: 18px;
+}
+
+.theme-btn {
+  margin-top: 10px;
+  border: 2px solid black;
+  background-color: white;
+  font-family: inherit;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.darkmode .theme-btn {
+  background-color: rgb(65, 65, 65);
+  color: white;
+  border-color: white;
 }
