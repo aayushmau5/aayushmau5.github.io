@@ -1,0 +1,59 @@
+baseURL: http://aayushmau5.github.io/
+languageCode: en-us
+title: aayushmau5
+theme: "PaperMod"
+
+enableRobotsTXT: true
+
+minify:
+  minifyOutput: true
+
+params:
+  env: production
+  author: "aayushmau5"
+  description: "aayushmau5' personal website"
+  images: ["https://avatars.githubusercontent.com/u/54525741?v=4"]
+  keywords: [Blog]
+  defaultTheme: dark
+
+  ShowReadingTime: true
+  ShowPostNavLinks: true
+  comments: false
+  ShowBreadCrumbs: true
+  hideSummary: true
+
+  profileMode:
+    enabled: true
+    title: Aayush Kumar Sahu
+    subtitle: "A web developer and an open-source enthusiast"
+    imageUrl: "https://avatars.githubusercontent.com/u/54525741?v=4"
+    imageWidth: 120
+    imageHeight: 120
+    imageTitle: my image
+
+  socialIcons:
+    - name: twitter
+      url: "https://twitter.com/aayushmau5"
+    - name: linkedin
+      url: "https://in.linkedin.com/in/aayushmau5"
+    - name: github
+      url: "https://github.com/aayushmau5"
+menu:
+  main:
+    - identifier: posts
+      name: Posts
+      url: /posts/
+      weight: 5
+    - identifier: about
+      name: About Me
+      url: /about/
+      weight: 10
+    - identifier: tags
+      name: Tags
+      url: /tags/
+      weight: 20
+
+markup:
+  highlight:
+    lineNos: true
+    guessSyntax: true
