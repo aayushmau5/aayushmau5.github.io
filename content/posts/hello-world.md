@@ -15,7 +15,7 @@ cover:
 console.log("Hello, World!");
 ```
 
-Welcome to my first **official** blog.
+Welcome to my first post(or blog).
 
 The idea of making blogs has always been in back of my mind, but I finally got to make it after reading [this](https://www.swyx.io/learn-in-public/) article by [swyx](https://twitter.com/swyx).
 
