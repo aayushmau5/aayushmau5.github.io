@@ -3,6 +3,7 @@ title: "Why The Odin Project is the best place to start learning web development
 date: 2021-04-29T13:30:32+05:30
 draft: false
 description: "Alternatively: My experience through web development with The Odin Project"
+tags: ["web-development"]
 cover:
   image: "https://raw.githubusercontent.com/TheOdinProject/theodinproject/master/app/assets/images/og-logo.png"
   alt: "The Odin Project banner"
