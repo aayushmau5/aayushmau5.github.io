@@ -48,9 +48,9 @@ Here are the things I liked and found interesting about it:
 
 - The curriculum is **frequently** updated with the latest and required technologies so you don't have to worry about the contents being outdated.
 
-- They enforce good behaviours such as googling before asking(which I think most beginners lack), how to ask questions, etc. which you definitely need to have out there on the world. So, It's good to have these behaviours enforced from the beginning.
+- They encourage good behaviours such as googling before asking(which I think most beginners lack), how to ask questions, etc. which you definitely need to have out there on the world. So, It's good to have these behaviours encouraged from the beginning.
 
-- Encourages you to get out of your comfort zone. As the more you get out of your comfort zone, the more you learn.
+- They encourage you to get out of your comfort zone. As the more you get out of your comfort zone, the more you learn.
 
 These are the reasons why I love The Odin Project and encourage everyone who wants to learn web-development to learn through The Odin Project.
 
