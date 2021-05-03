@@ -1,9 +1,9 @@
 ---
 title: "Using Apollo GraphQL with Typescript in the Backend"
 description: "The type safe of using Apollo GraphQL with Typescript"
-date: 2021-05-02T16:23:26+05:30
+date: 2021-05-03T12:23:26+05:30
 draft: false
-tags: ["graphql", "typescript"]
+tags: ["apollo", "graphql", "typescript"]
 ShowToc: true
 cover:
   image: "/graphql-typescript/ts-gql.png"
@@ -52,7 +52,6 @@ import { gql } from "apollo-server"; // or apollo-server-express
 
 export const Schema = gql`
   type Author {
-    id: ID!
     name: String!
   }
 
@@ -63,10 +62,20 @@ export const Schema = gql`
     author: Author!
   }
 
+  input BookInput {
+    name: String!
+    rating: Int!
+    authorName: String!
+  }
+
   type Query {
     getAllBooks: [Book]!
     getAllAuthors: [Author]!
     getBookByName(name: String!): Book
+  }
+
+  type Mutation {
+    addBook(data: BookInput!): Book
   }
 `;
 ```
@@ -78,7 +87,6 @@ Here's what my `resolver/index.ts` looks like
 ```js
 //index.ts
 interface Author {
-  id: number;
   name: string;
 }
 
@@ -95,7 +103,6 @@ const Books: Book[] = [
     name: "First Book",
     rating: 4,
     author: {
-      id: 100,
       name: "First Person",
     },
   },
@@ -104,7 +111,6 @@ const Books: Book[] = [
     name: "Second Book",
     rating: 4,
     author: {
-      id: 101,
       name: "Second Person",
     },
   },
@@ -123,22 +129,36 @@ function getBookByName(_parent, args) {
   return Books.filter((bookObject) => bookObject.name === name);
 }
 
-export const Resolvers = {
+function addBook(_parent, args) {
+  const { name, rating, authorName } = args.data;
+  Books.push({
+    id: Books.length + 1,
+    name,
+    rating,
+    author: { name: authorName },
+  });
+  return Books[Books.length];
+}
+
+export const resolvers = {
   Query: {
     getAllBoosk,
     getAllAuthors,
     getBookByName,
   },
+  Mutation: {
+    addBook,
+  },
 };
 ```
 
-So, as you can notice, our resolvers doesn't have any function signature. You can make it yourself, but that is a tedious task. This is why we need to generate types for our resolver functions.
+As you can notice, our resolvers don't have any function signature. You can make it yourself, but that is a tedious task. This is why we need to generate types for our resolver functions.
 
 **Did you notice the typo?**
 
-Look again at line `38`. This is a mistake that can be made very easily. But types will negate this issue as well.
+Look again at line `58`. This is a mistake that can be made very easily. But types will negate this issue as well.
 
-**Finally, here's what you are looking for**
+**Finally, here's what you are looking for.**
 
 ### Adding types with GraphQL Code Generator
 
@@ -190,14 +210,18 @@ Run `npm install` then `npm generate` to generate the schema file(**NOTE:** Your
 
 If all went well, you will have a type file generated in `src/generated/graphql.ts`(if you wanna change this, put desired path in [Step-4](#step-4))
 
-**Now we are ready to add types to our resolver functions**
+**Now we are ready to add types to our resolver functions.**
 
 ### Adding types to resolver functions
 
-If you look inside the `src/generated/graphql.ts` file, you will a whole lot of stuff. But main things are, `QueryResolvers` and `MutationResolvers`. These two are responsible for adding types to our Resolvers.
+If you look inside the `src/generated/graphql.ts` file, you will a whole lot of stuff. But main things are, `Resolvers`, `QueryResolvers` and `MutationResolvers`. These three are responsible for adding types to our Resolvers.
 
 ```ts
-import { QueryResolvers } from "../generated/graphql";
+import {
+  Resolvers,
+  QueryResolvers,
+  MutationResolvers,
+} from "../generated/graphql";
 //import path may differ based on the location of resolver file
 
 function getAllBooks(): QueryResolvers["getAllBooks"] {
@@ -213,18 +237,33 @@ function getBookByName(_parent, args): QueryResolvers["getBookByName"] {
   return Books.filter((bookObject) => bookObject.name === name);
 }
 
-export const Resolvers: QueryResolvers = {
+function addBook(_parent, args): MutationResolvers["addBook"] {
+  const { name, rating, authorName } = args.data;
+  Books.push({
+    id: Books.length + 1,
+    name,
+    rating,
+    author: { name: authorName },
+  });
+  return Books[Books.length];
+}
+
+export const resolvers: Resolvers = {
+  // You will get autocompletions for the queries and mutations fields
   Query: {
-    getAllBoosk,
+    getAllBooks,
     getAllAuthors,
     getBookByName,
+  },
+  Mutation: {
+    addBook,
   },
 };
 ```
 
-First, we start with line `17`. Here, we added `QueryResolvers` as a type(or interface) to our `Resolvers` object.
+First, we start with line `32`. Here, we added `Resolvers` as a type(or interface) to our `Resolvers` object.
 
-`QueryResolvers` basically looks like this
+`Resolvers` basically looks like this
 
 ```js
 interface QueryResolvers {
@@ -232,20 +271,29 @@ interface QueryResolvers {
     getAllAuthors: (.....);
     getBookByName: (.....);
 }
+
+interface MutationResolvers {
+  addBook: (....);
+}
+
+interface Resolvers {
+  Query: QueryResolvers,
+  Mutation: MutationResolvers
+}
 ```
 
-Main point to notice is that our `QueryResolvers` interface just looks like our GraphQL `Query` type. Thus, providing type safety on what Resolver functions you can make based on the interface.
+Main point to notice is that our `Resolvers` interface just looks like our GraphQL `Query` type. Thus, providing type safety on what Resolver functions you can make based on the interface.
 
 No more Typos on Resolver function names.
 
 For Mutations, you use `MutationResolvers`.
 
-Now, looking at lines `4`, `8` and `12`. You see that I have added `QueryResolvers["<QueryNameResolverCorrespondTo>"]`. This is used to give types to our individual resolver function.
+Now, looking at lines `8`, `12`, `16` and `21`. You see that I have added `QueryResolvers["<QueryNameResolverCorrespondTo>"]` as well as `MutationResolvers["<QueryNameResolverCorrespondTo>"]`. This is used to give types to our individual resolver function.
 
-That means, you don't have to manually type your `parent`, `args`,`info` and the return type of your resolver. (`context` is types with `any`, so you have to make your interface for that)
-
-For Mutation Resolver function, you use `MutationResolvers["<MutationNameResolverCorrespondTo>"]`.
+That means, you don't have to manually make types for your `parent`, `args`,`info` and the return type of your resolver. (`context` is typed with `any`, so you have to make your own interface for that.)
 
 And, there you go. You are now getting the types in your Resolver functions.
 
-I have covered only the basics of adding types in your Apollo GraphQL code But You can do a lot of more with **GraphQL Code Generator**. Checkout the docs [here](https://www.graphql-code-generator.com/docs/getting-started/index).
+I have covered only the basics of adding types in your Apollo GraphQL code But you can do a lot of more with **GraphQL Code Generator**. Checkout the docs [here](https://www.graphql-code-generator.com/docs/getting-started/index).
+
+If you wanna see more in-depth example with real code, check out this article -> https://formidable.com/blog/2019/strong-typing/
