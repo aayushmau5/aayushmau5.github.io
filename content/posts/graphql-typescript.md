@@ -1,5 +1,5 @@
 ---
-title: "Using Apollo GraphQL with Typescript in the Backend"
+title: "Guide to setting up Types for Apollo GraphQL with Typescript in the Backend"
 description: "The type safe of using Apollo GraphQL with Typescript"
 date: 2021-05-03T12:23:26+05:30
 draft: false

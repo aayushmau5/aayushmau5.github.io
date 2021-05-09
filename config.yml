@@ -21,15 +21,20 @@ params:
   comments: false
   ShowBreadCrumbs: true
   hideSummary: true
+  disableSpecial1stPost: true
 
-  profileMode:
-    enabled: true
-    title: Aayush Kumar Sahu
-    subtitle: "A web developer and an open-source enthusiast"
-    imageUrl: "https://avatars.githubusercontent.com/u/54525741?v=4"
-    imageWidth: 120
-    imageHeight: 120
-    imageTitle: my image
+  # profileMode:
+  #   enabled: false
+  #   title: Aayush Kumar Sahu
+  #   subtitle: "A web developer and an open-source enthusiast"
+  #   imageUrl: "https://avatars.githubusercontent.com/u/54525741?v=4"
+  #   imageWidth: 120
+  #   imageHeight: 120
+  #   imageTitle: my image
+
+  homeInfoParams:
+    Title: "Hi \U0001F44B"
+    Content: Just sharing what I learn
 
   socialIcons:
     - name: twitter
@@ -38,16 +43,20 @@ params:
       url: "https://in.linkedin.com/in/aayushmau5"
     - name: github
       url: "https://github.com/aayushmau5"
+
+  cover:
+    hiddenInList: true
+
 menu:
   main:
-    - identifier: posts
-      name: Posts
-      url: /posts/
-      weight: 5
-    - identifier: about
-      name: About Me
-      url: /about/
-      weight: 10
+    # - identifier: posts
+    #   name: Posts
+    #   url: /posts/
+    #   weight: 5
+    # - identifier: about
+    #   name: About Me
+    #   url: /about/
+    #   weight: 10
     - identifier: tags
       name: Tags
       url: /tags/
@@ -57,3 +66,4 @@ markup:
   highlight:
     lineNos: true
     guessSyntax: true
+    codeFences: true
