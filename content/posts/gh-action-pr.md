@@ -1,6 +1,5 @@
 ---
 title: "Making PR to another repository using Github Actions"
-description: "...."
 date: 2021-05-21T14:47:08+05:30
 draft: false
 tags: ["github", "actions"]
