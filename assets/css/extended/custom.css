@@ -1,0 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,600;1,200;1,400&display=swap");
+
+.chroma {
+  background-color: unset;
+}
+
+code {
+  font-family: "JetBrains Mono", monospace !important;
+  font-size: 0.9rem !important;
+}

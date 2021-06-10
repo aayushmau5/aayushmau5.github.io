@@ -47,6 +47,9 @@ params:
   cover:
     hiddenInList: true
 
+  assets:
+    disableHLJS: true
+
 menu:
   main:
     # - identifier: posts
@@ -64,6 +67,9 @@ menu:
 
 markup:
   highlight:
+    # noClasses: false
+    # pygmentsUseClasses: true
     lineNos: true
     guessSyntax: true
     codeFences: true
+    style: paraiso-dark
