@@ -7,7 +7,7 @@ tags: ["web-development"]
 cover:
   image: "https://raw.githubusercontent.com/TheOdinProject/theodinproject/master/app/assets/images/og-logo.png"
   alt: "The Odin Project banner"
-  caption: "Image taken from theodinproject.com"
+  caption: "Image taken from [The Odin Project](https://www.theodinproject.com)"
   relative: false
   hidden: false
 ---

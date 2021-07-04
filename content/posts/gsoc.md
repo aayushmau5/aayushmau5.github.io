@@ -2,7 +2,7 @@
 title: "Getting selected in GSoC"
 date: 2021-06-03T19:59:26+05:30
 draft: false
-tags: ["gsoc", "open-source"]
+tags: ["gsoc", "open-source", "asyncapi"]
 cover:
   image: "/sunset.webp"
   alt: "Image taken from pexels.com"
@@ -47,6 +47,7 @@ Worked on some issues(almost broke some codebase as well :p). This step also hel
 As I said initially in the blog, I got selected. I was really happy and ecstatic. But for those who didn't get selected, know that the main aim of GSoC is to get you started in Open-Source, you can still do it without GSoC.
 
 **Here are the main takeways from this blog:**
+
 - **Get familiar with the codebase and look at similar tools. Get proposal reviewed from the mentor.**
 - **Even after submitting the proposal, you should contribute to your org**
 - **Just keep on contributing even after GSoC**

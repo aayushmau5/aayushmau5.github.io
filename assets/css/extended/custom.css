@@ -8,3 +8,15 @@ code {
   font-family: "JetBrains Mono", monospace !important;
   font-size: 0.9rem !important;
 }
+
+.dark {
+  --content: rgba(255, 255, 255, 0.74);
+  --primary: #fff;
+  --secondary: #9fa3ad;
+  --tertiary: rgba(255, 255, 255, 0.16);
+  --theme: #17191c;
+  --hljs-bg: #101114;
+  --code-bg: #24272e;
+  --entry: #101114;
+  --border: #101114;
+}
