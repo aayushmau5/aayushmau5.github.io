@@ -56,14 +56,14 @@ menu:
     #   name: Posts
     #   url: /posts/
     #   weight: 5
-    # - identifier: about
-    #   name: About Me
-    #   url: /about/
-    #   weight: 10
+    - identifier: about
+      name: About Me
+      url: /about/
+      weight: 20
     - identifier: tags
       name: Tags
       url: /tags/
-      weight: 20
+      weight: 10
 
 markup:
   highlight:
