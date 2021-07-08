@@ -1,6 +1,6 @@
 baseURL: http://aayushmau5.github.io/
 languageCode: en-us
-title: aayushmau5
+title: Blogs by aayushmau5
 theme: "PaperMod"
 
 enableRobotsTXT: true
@@ -11,9 +11,9 @@ minify:
 params:
   env: production
   author: "aayushmau5"
-  description: "aayushmau5' personal website"
-  images: ["https://avatars.githubusercontent.com/u/54525741?v=4"]
-  keywords: [Blog]
+  description: "blogs by Aayush Kumar Sahu"
+  images: ["/cover.png"]
+  keywords: ["aayushmau5", "blog"]
   defaultTheme: dark
 
   ShowReadingTime: true
