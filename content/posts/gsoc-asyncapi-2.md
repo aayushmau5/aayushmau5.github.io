@@ -1,8 +1,8 @@
 ---
-title: "GSoC: Week 3 at AsyncAPI"
+title: "GSoC at AsyncAPI: Part 2"
 date: "2021-07-03T21:13:49+05:30"
 draft: false
-description: "My GSoC experience blog: Part 2"
+description: "My GSoC experience blog"
 tags: ["gsoc", "open-source", "asyncapi"]
 showToc: true
 cover:
