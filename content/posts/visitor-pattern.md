@@ -95,7 +95,7 @@ Worry not!! We are going to learn how to do this using the **Visitor design patt
 
 ### The Visitor pattern
 
-We are finally here!! Let's learn what is this visitor pattern all about and how can it be used to solve the problem above.
+Now that we have seen the problem we face, lets learn what is visitor pattern and how can it be used to solve this problem.
 
 From [wikipedia](https://en.wikipedia.org/wiki/Visitor_pattern):
 
@@ -107,29 +107,29 @@ From [wikipedia](https://en.wikipedia.org/wiki/Visitor_pattern):
 
 This definition is quite good and literally shows the benefits of Visitor Pattern.
 
-First of all, we see that "the visitor design pattern is a way of separating an algorithm from an object structure on which it operates". This means that using the visitor design pattern, we separate a piece of data and the operation we do on that piece. We achieve this by providing a **level of indirection** in our code. You'll see what I'm talking about after a little while.
+First of all, we see that "the visitor design pattern is a way of separating an algorithm from an object structure on which it operates". This means that using the visitor design pattern, we separate a piece of data and the operation we do on that piece. We achieve this by providing a **level of indirection** in our code(later in the example).
 
-"A practical result of this separation is the ability to add new operations to existing object structures without modifying the structures". This is the reason why we are using the visitor pattern. As I said above, cracking open every class and adding new methods in them gets tedious and violets some principles, visitor pattern negates this behavior.
+"A practical result of this separation is the ability to add new operations to existing object structures without modifying the structures". This is the reason why we are using the visitor pattern. As I said above, cracking open every class and adding new methods in them gets tedious and violets principles, visitor pattern negates this behavior.
 
-The visitor pattern also allows us to define methods in a single place(no hard rule though, it depends on you), which makes adding new methods to existing classes **a lot** easier.
+The visitor pattern also allows us to define methods relating to different classes in a single place(no hard rule though, it depends on you), which makes adding new methods to existing classes **a lot** easier.
 
-So, we have seen what visitor pattern does and why should we use it, but, **WHAT is this visitor pattern? Show me the code, man.**
+So, we have seen what visitor pattern does and why should we use it, but, WHAT is this visitor pattern? **Show me the damn code!**
 
-Fear not, cause I have an example just to see this Visitor pattern in action.
+Fear not, cause I have an example just to see this pattern in action.
 
 ### Example
 
-We will take an example of `cars`. I chose this example just because I feel like this example or something close to this example is what we will encounter most in real life and setting up a concrete real-life example would take more code than I intend to add here :)
+We will take an example of `Cars`. I chose this example just because I feel like this example or something close to this example is what we will encounter most in real life and setting up a more concrete real-life example would take more code than I intend to add in this blog :)
 
 #### Scenario
 
-Let's setup a scenario for our example.
+Lets setup a scenario for our example.
 
-Imagine we have 3 cars(though I'm too poor to afford 3 cars, but lets just _imagine_) namely BMW, Mercedes, & Bugatti(literally took those names from a google search :P).
+Imagine we want to buy 3 cars(I said _imagine_) namely BMW, Mercedes, & Bugatti(_thanks duckduckgo_).
 
-We assume that each car has different price, different repairing costs, etc. Given our maximum amount we can spend, how would we map this price to these purchase & repair costs, and get different output based on whether the given price is more than we'd like to spend?
+We assume that each car has different purchase price, different repairing costs, etc. Given a maximum amount we can spend, we'd like to know if we can afford a car or not. How would we map the max amount we can spend to these purchase & repair costs, and get different output based on whether the given price is more than we can afford?
 
-Well, the obvious way would be to make a `car` interface and have classes based on given cars and add methods onto them.
+Well, the obvious way would be to make classes based on given cars and add methods into them.
 
 ```js
 class BMWCar {
@@ -143,9 +143,9 @@ class BMWCar {
 // similar classes for Mercedes and Bugatti car as well
 ```
 
-But as we saw above, this is a tedious task(imagine going through every class and adding a new method in them _especially_ if those classes are in different files), etc.
+But as we saw above, this is a tedious task(imagine going through every class and adding a new method in them _especially_ if those classes are in different files) & not recommended for a bunch of reasons.
 
-Therefore, we will use the Visitor Pattern so that adding new methods will be an easy task and won't violate a bunch of principles.
+Therefore, we will use the Visitor Pattern instead.
 
 #### The Visitor Pattern way
 
@@ -158,7 +158,7 @@ Here's how our directory structure will look like(I have omitted some files for 
 ```
 .
 ├── cars
-│   ├── car.ts          # the car interface
+│   ├── Car.ts          # the car interface
 │   ├── BMWCar.ts       # BMW car class
 │   ├── MercedesCar.ts  # Mercedes car class
 │   └── BugattiCar.ts   # Bugatti car class
@@ -166,15 +166,15 @@ Here's how our directory structure will look like(I have omitted some files for 
 │   ├── CostsVisitor.ts       # Visitor interface
 │   ├── RepairCostVisitor.ts  # Repair cost visitor class
 │   └── PurchaseVisitor.ts    # Purchase cost visitor class
-└── runner.ts   # Responsible for combining the cars and their visitors
+└── runner.ts   # Responsible for combining the classes and their visitors
 ```
 
 ##### Making Car interface and corresponding classes
 
-Let us make an `interface` for a car first(we can use an `abstract` class as well).
+Let us make an `interface` for a car first(we can use an `abstract` class instead of an interface here, as well).
 
 ```ts
-// car.ts
+// Car.ts
 export interface Car {
   getPrice(): number;
   getRepairCost(): number;
@@ -184,38 +184,40 @@ export interface Car {
 
 Make note of the `accept(v: any)` line. We will _revisit_ it to make some changes.
 
-Next up, we **implement** this interface into our different cars class.
+Next up, we **implement** the `car` interface into our different cars class.
 
 ```ts
+// import statements omitted
+
 // BMWCar.ts
 export class BMWCar implements Car {
-  getPrice() {
-    return 2; // as in 2 millions :p
+  getPrice(): number {
+    return 2; // as in 2 millions
   }
 
-  getRepairCost() {
+  getRepairCost(): number {
     return 0.7;
   }
 }
 
 // MercedesCar.ts
 export class MercedesCar implements Car {
-  getPrice() {
+  getPrice(): number {
     return 4;
   }
 
-  getRepairCost() {
+  getRepairCost(): number {
     return 0.8;
   }
 }
 
 // BugattiCar.ts
 export class BugattiCar implements Car {
-  getPrice() {
+  getPrice(): number {
     return 5;
   }
 
-  getRepairCost() {
+  getRepairCost(): number {
     return 1;
   }
 }
@@ -227,13 +229,14 @@ Notice that we don't implement the `accept` function yet. We will come back to i
 >
 > We made a `car` interface which contains all the methods that are common to all the cars that _implement_ that interface.
 >
-> We made 3 car classes namely `BMWCar`, `MercedesCar` & `BugattiCar`. Added common method in them **expect** the `accept` method which we will revisit later.
+> We made 3 car classes namely `BMWCar`, `MercedesCar` & `BugattiCar`. Added common method in them **except** the `accept` method which we will add later.
 
-##### Making a `visitor` interface
+##### Implementing the visitors
 
-Next up, we make an interface which we call as "CostsVisitor". This interface is responsible for containing the methods that will be common to different methods that our class will implement.
+Next up, we make an interface which we call `CostsVisitor`. This interface is responsible for holding all the visitors functions definitions that our different visitor classes will implement(check below).
 
 ```ts
+// CostsVisitor.ts
 export interface CostsVisitor {
   visitBMWCar(v: BMWCar): void;
   visitMercedesCar(v: MercedesCar): void;
@@ -241,21 +244,22 @@ export interface CostsVisitor {
 }
 ```
 
-Aside from the weird `visit` and `Visitor` names, this interface is pretty straightforward. We have 3 functions which take a parameter called `v` which maps to their corresponding classes and they don't return anything(thus `void`).
+Aside from the weird `visit` and `Visitor` names, this interface is pretty straightforward. We have 3 functions definitions which take a parameter `v` whose type maps to their corresponding car class.
 
 > **What's in the name?**
 >
-> We might be confused by this weird names like `accept`, `visit` and `Visitor`, but that's just the conventions of naming methods and interfaces in the Visitor pattern. It helps when someone else familiar with the Visitor Pattern will read our code, they will be able to understand what these methods do.
+> These weird names like `accept`, `visit` and `Visitor` can be confusing at first, but that's just the conventions of naming methods and interfaces in the Visitor pattern. It helps when someone else familiar with the Visitor Pattern will read our code, they will be able to understand what these methods do.
 >
-> As for us, to provide some "meaning" to these _weird_ names, we can think of them as:
+> As for us, to provide some "meaning" to these "weird" names, we can think of them as:
 >
 > - `accept` accepts a visitor(as a welcoming in a visitor)
 > - `visit` _visits_ a particular class
 > - `visitor` has a bunch of visit methods
 
-Now, we are going to implement the Price function and Repair cost functions. These functions will check whether we can afford to buy a car as well as repair it. They all implement our `CostsVisitor` interface.
+Now, we are going to implement the Purchase visitor and Repair cost visitor. These are just classes that implement functions that will check whether we can afford to buy a car as well as repair it. These classes implement our `CostsVisitor` interface.
 
 ```ts
+// PurchaseVisitor.ts
 export class PurchaseVisitor implements CostsVisitor {
   maxAffordablePrice: number;
   constructor(maxPrice: number) {
@@ -291,11 +295,12 @@ export class PurchaseVisitor implements CostsVisitor {
 }
 ```
 
-This is a pretty straightforward class. We implement the `visit` methods in them, and right now, they just check whether the car price is more than we can afford or not, and respectively console.log that message.
+This is a pretty straightforward class. We implement the `visit` methods in them, and right now, they are just checking whether the car price is more than we can afford or not, and respectively `console.log`ing that message.
 
-Next, we implement the RepairCost class.
+Next, we implement the Repair Cost visitor class.
 
 ```ts
+// RepairCostVisitor.ts
 export class RepairCostVisitor implements CostsVisitor {
   maxAffordableRepairCost: number;
   constructor(maxCost: number) {
@@ -333,9 +338,7 @@ export class RepairCostVisitor implements CostsVisitor {
 
 This one is similar as the last one. We just check whether the repair cost is more than we can afford, and console.log that corresponding messages.
 
-**This is what we meant by "having all your logic in one place"**. We are implementing this Price checker and Repair Cost checker for all the different classes in a single place(or in a single class).
-
-We will see how easy it is to add a new method in our cars classes without going through each and every class.
+**This is what we meant by "having all your logic in one place"**. We are implementing this Purchase cost checker and Repair cost checker for all the different classes in a single place(or in a single class).
 
 So far, so good?
 
@@ -348,14 +351,14 @@ So far, so good?
 
 ##### Re-_visiting_ our previous class
 
-Remember when I said, "We don't implement the `accept` function yet. We will come back to it later"([_Refresh your memory_](#making-car-interface-and-corresponding-classes)). Well, nows the time to revisit these cars classes.
+Remember when I said, "We don't implement the `accept` function yet. We will come back to it later"([_Refresh your memory_](#making-car-interface-and-corresponding-classes)). Well, nows the time to revisit those cars classes.
 
 **Fixing the car interface**
 
 We used `any` in our `Car` interface, so now we are going to replace `any` with `CostsVisitor` interface.
 
 ```ts
-// car.ts
+// Car.ts
 export interface Car {
   getPrice(): number;
   getRepairCost(): number;
@@ -417,7 +420,7 @@ export class BugattiCar implements Car {
 }
 ```
 
-This part is little bit weird. We add the `accept` method which takes a parameter `v` having the `CostsVisitor` interface & inside every function, we are calling a function that maps to their corresponding class, and pass `this`(the object instance) as the argument. This will all make sense when we wire it all up.
+This part is little bit weird. We add the `accept` method which takes a parameter `v` as the `CostsVisitor` interface & inside each function, we call the corresponding visitor method for each class, and pass `this`(the object instance) as the argument. This will all make sense when we wire it all up.
 
 ##### Wiring it all up
 
@@ -432,8 +435,8 @@ import { MercedesCar } from "./cars/MercedesCar";
 import { RepairCostVisitor } from "./costs/RepairCostVisitor";
 import { PurchaseVisitor } from "./costs/PurchaseVisitor";
 
-const purchaseVisitor = new PurchaseVisitor(2);
-const repairCostVisitor = new RepairCostVisitor(2);
+const purchaseVisitor = new PurchaseVisitor(2); // we can afford to spend 2 millions to purchase a car
+const repairCostVisitor = new RepairCostVisitor(3); // we can afford to spend 3 millions to repair a car
 
 const bmwCar = new BMWCar();
 const bugattiCar = new BugattiCar();
@@ -450,12 +453,26 @@ bugattiCar.accept(repairCostVisitor);
 mercedesCar.accept(repairCostVisitor);
 ```
 
+Output:
+
+```
+// Purchase
+Purchased BMW
+Cannot buy Bugatti Car
+Cannot buy Mercedes Car
+
+// Repair
+Repaired BMW
+Cannot repair Bugatti
+Cannot repair Mercedes
+```
+
 Here's the quick rundown of what's happening here:
 
 - We first instantiate the visitor classes as well as the car classes.
 - We pass the visitor instance in the `accept` method of various car objects.
 
-You can now go ahead, compile the TypeScript code and get it running.
+You can now go ahead, compile the TypeScript code and start hacking on it.
 
 **How does this work?**
 
@@ -469,9 +486,9 @@ The best way to know what's going on here is to visualize it. Here's a little vi
 
 ![repair-cost-visitor](/visitor/repair-cost-visitor.png#center)
 
-As we can see, we invoke the `accept` method of our car **instance**, passing in the visitor we want our car instance(/object) to interact with. If we want to know the purchase price, we pass in the `purchaseVisitor` & if we want to know the repair cost, we pass in the `repairCostVisitor`.
+We see that we invoke the `accept` method of our car **instance**, passing in the desired visitor we want our car instance to interact with. If we want to know the purchase price, we pass in the `purchaseVisitor` & if we want to know the repair cost, we pass in the `repairCostVisitor`.
 
-If we were to make a new method, we never have to touch those classes, instead make a new visitor and just plug that in inside the `accept` function. See how easy it is to add/remove new methods!
+If we were to make a new method, we never have to touch those classes, instead make a new visitor and just plug that in inside the `accept` function. See how easy it is to add/remove new methods. Neat!
 
 **This is the Visitor design pattern.** Again, you can find the code for this blog [here](https://www.github.com/aayushmau5/visitor-pattern).
 
@@ -481,7 +498,9 @@ Good stuff!
 
 We saw the visitor design pattern, why it is used and how can one use it.
 
-It took me longer than I anticipated to write this blog. Alright, that's it folks! Thanks for sticking till the end :)
+It took me longer than I anticipated to write this blog but this blog post helped me understand this pattern a bit more. So, that's good.
+
+Alright, that's it folks! Thanks for sticking till the end :)
 
 Keep _visiting!_(bad pun, sorry not sorry :P)
 
