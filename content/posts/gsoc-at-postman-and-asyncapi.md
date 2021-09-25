@@ -1,10 +1,15 @@
 ---
 title: "GSoC at Postman and AsyncAPI"
-date: 2021-08-20T19:29:43+05:30
-description: "My final blog for my GSoC journey"
+date: 2021-09-01T19:29:43+05:30
+description: "Final blog for my GSoC journey"
 tags: ["gsoc", "open-source", "asyncapi"]
-draft: true
+draft: false
 showToc: true
+cover:
+  image: "/gsoc-final/gsoc-postman-asyncapi.jpeg"
+  alt: "Poster with GSOC, Postman & AsyncAPI logo"
+  relative: false
+  hidden: false
 ---
 
 # Introduction
@@ -31,7 +36,7 @@ The main Input/Output flow of this library was, user will provide two **parsed**
 
 ![flow](/gsoc-final/diff-flow.png#center)
 
-Thus, we have two parsed AsyncAPI data in a JSON format. In order to generate a diff between two JSON data, we can either **make our own JSON differ** or **use a pre-built library**. Luckily, [Lukasz Gornicki](https://github.com/derberg)(AsyncAPI maintainer) made that decision clear for me. _(Thanks, Lukasz! 🙌)_
+Thus, we have two parsed AsyncAPI data in a JSON format. In order to generate a diff between two JSON data, we can either **make our own JSON differ** or **use a pre-built library**. Luckily, [Lukasz Gornicki](https://github.com/derberg)(AsyncAPI maintainer) made that decision clear for me. (Thanks, Lukasz! 🙌)
 
 ![comment](/gsoc-final/lukasz_comment.png#center)
 
