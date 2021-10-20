@@ -22,6 +22,7 @@ params:
   ShowBreadCrumbs: true
   hideSummary: true
   disableSpecial1stPost: true
+  ShowCodeCopyButtons: true
 
   # profileMode:
   #   enabled: false
@@ -56,6 +57,10 @@ menu:
     #   name: Posts
     #   url: /posts/
     #   weight: 5
+    - identifier: search
+      name: Search
+      url: /search/
+      weight: 10
     - identifier: about
       name: About Me
       url: /about/
@@ -73,3 +78,9 @@ markup:
     guessSyntax: true
     codeFences: true
     style: paraiso-dark
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
