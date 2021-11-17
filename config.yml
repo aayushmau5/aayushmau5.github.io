@@ -53,10 +53,10 @@ params:
 
 menu:
   main:
-    # - identifier: posts
-    #   name: Posts
-    #   url: /posts/
-    #   weight: 5
+    - identifier: archives
+      name: Archives
+      url: /archives/
+      weight: 5
     - identifier: search
       name: Search
       url: /search/
@@ -69,13 +69,17 @@ menu:
       name: Tags
       url: /tags/
       weight: 10
+    - identifier: stuff
+      name: Stuff
+      url: /stuff/
+      weight: 15
 
 markup:
   highlight:
     # noClasses: false
     # pygmentsUseClasses: true
     lineNos: true
-    guessSyntax: true
+    guessSyntax: false
     codeFences: true
     style: paraiso-dark
 
